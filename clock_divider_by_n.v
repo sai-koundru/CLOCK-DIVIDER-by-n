@@ -1,6 +1,5 @@
-`timescale 1ns / 1ps
-
-module n_clk(
+module clock_divider_by_n
+    (
     input clk,
     input [31:0] n,
     output reg n_clk = 0
@@ -11,17 +10,17 @@ module n_clk(
     always @(posedge clk)
     begin
     
-    if(count == n - 1)
-    begin
-    count <= 0;
-    n_clk <= ~ n_clk;
-    end    
+        if(count == n - 1)
+            begin
+                count <= 0;
+                n_clk <= ~ n_clk;
+            end    
     
     
     else 
-    begin
-    count <= count + 1;
-    end
+        begin
+            count <= count + 1;
+        end
     end
     
     
